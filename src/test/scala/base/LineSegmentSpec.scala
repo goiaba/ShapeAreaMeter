@@ -17,7 +17,7 @@ class LineSegmentSpec extends WordSpec {
     "given a point A(1,2) and a line segment formed by the " +
       "points I(-1,9) and J(9,-1)" should {
       "assure that IJ does not contain A" in {
-        assert(Fixtures.IJ.contain(Some(Fixtures.A)).getOrElse(false) == false)
+        assert(Fixtures.IJ.contain(Some(Fixtures.A)) == false)
       }
     }
     "given two line segments IJ[(-1,9), (9,-1)] and " +

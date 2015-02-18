@@ -31,13 +31,11 @@ object Fixtures {
   val R = Point(3,-2)
 
   //complex polygon points
-  val S = Point(-10,3)
-  val T = Point(-6,5)
-  val U = Point(-3,9)
-  val V = Point(3,11)
-  val W = Point(7,8)
-  val X = Point(4,-3)
-  val Z = Point(-5,-2)
+  val S = Point(-4,6)
+  val T = Point(-3,3)
+  val U = Point(1,3)
+  val V = Point(-4,-4)
+  val W = Point(-6,3)
 
   //parallel horizontal
   val CD = LineSegment(C, D)
@@ -61,7 +59,7 @@ object Fixtures {
 
   //polygons
   val simplePolygon = Polygon(Point(0,0), Point(2,2), Point(2,0))
-  val complexPolygon = Polygon(S, T, U, V, W, X, Z)
+  val complexPolygon = Polygon(S, T, U, V, W)
 
   /**
    *  CD intersects CE, DF, KL, IJ
