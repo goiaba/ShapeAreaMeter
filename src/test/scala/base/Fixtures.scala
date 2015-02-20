@@ -1,11 +1,13 @@
 package base
 
-import polygon.Polygon
+import shape.Polygon
 
 /**
  * Created by bruno on 2/7/15.
  */
 object Fixtures {
+
+  val epsilon = 0.005
 
   //points
   val A = Point(1,2)
@@ -60,6 +62,8 @@ object Fixtures {
   //polygons
   val simplePolygon = Polygon(Point(0,0), Point(2,2), Point(2,0))
   val complexPolygon = Polygon(S, T, U, V, W)
+
+  val locationPoint = Point(10,10)
 
   /**
    *  CD intersects CE, DF, KL, IJ

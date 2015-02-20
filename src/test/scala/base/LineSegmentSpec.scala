@@ -7,6 +7,20 @@ import org.scalatest.WordSpec
  */
 class LineSegmentSpec extends WordSpec {
   "The LineSegment" when {
+    "given a null point" should {
+      "produce an exception" in {
+        intercept[IllegalArgumentException] {
+          LineSegment(null, Fixtures.A)
+        }
+      }
+    }
+    "given two equal points" should {
+      "throw an exception" in {
+        intercept[IllegalArgumentException] {
+          LineSegment(Fixtures.A, Fixtures.A)
+        }
+      }
+    }
     "given two points I(-1,9) and J(9,-1)" should {
       "create a LineSegment formed by those points" in {
         val I = Fixtures.IJ.p1
