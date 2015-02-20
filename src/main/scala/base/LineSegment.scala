@@ -56,7 +56,6 @@ case class LineSegment(p1:Point, p2: Point) {
     yield contain).get
   }
 
-  //FIXME write documentation
   /**
    * Determines the point of intercept between a given lineSegment
    *  and this.

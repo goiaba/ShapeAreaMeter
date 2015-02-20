@@ -1,7 +1,5 @@
 package base
 
-import scala.math._
-
 /**
  * Created by bruno on 2/6/15.
  */

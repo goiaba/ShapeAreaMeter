@@ -21,4 +21,7 @@ case class Point(x: Double, y: Double) {
       pow((this.y - anotherPoint.y), 2)
     )
   }
+
+  def +(point: Point): Point =
+    Point(point.x + x, point.y + y)
 }

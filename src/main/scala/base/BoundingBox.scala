@@ -1,39 +1,35 @@
 package base
 
-import polygon.{Polygon, Shape}
+import shape.{Location, Polygon, Rectangle, Shape}
 
 /**
  * Created by bruno on 2/8/15.
  */
 object BoundingBox {
   /**
-   * Define the bounding box of a given polygon. A bounding
-   *  box is the smallest rectangle parallel to the axes that
-   *  encloses the entire polygon.
-   * @param p the Shape for which we want to define the
-   *           bounding box
-   * @return the bounding box of the given rectangle and
-   *          its area
+   * Define the bounding box of a given polygon. A bounding box is the
+   *  smallest rectangle parallel to the axes that encloses the entire
+   *  polygon.
+   *
+   * @param shape the Polygon for which we want to define the bounding
+   *               box
+   * @return a Location representing the BoundingBox of the given
+   *          shape
    */
-  def apply(p: Shape): (Shape, Double) = {
-    val (minX, minY, maxX, maxY) = boundaries(p)
-    val area = (maxX - minX) * (maxY - minY)
-    val boundingBox =
-      Polygon(Point(minX,maxY), Point(maxX, maxY), Point(maxX, minY), Point(minX, minY))
-    (boundingBox, area)
-  }
-
-  /**
-   * Return a tuple containing the boundaries of the bounding
-   *  box of the given Shape.
-   * @param p the Shape for which we want to define the
-   *           bounding box boundaries
-   * @return a tuple containing the following information
-   *          (minX, minY, maxX, maxY)
-   */
-  def boundaries(p: Shape): (Double, Double, Double, Double) = {
-    val points = p.sides().map(s => Point(s.p1.x, s.p1.y)).toSeq
-    (points.minBy(_.x).x, points.minBy(_.y).y,
-     points.maxBy(_.x).x, points.maxBy(_.y).y)
+  def apply(shape: Shape): Location = shape match {
+    case Rectangle(p1, p2, p3, p4) =>
+      Location(Point(0, 0), Rectangle(p1, p2, p3, p4))
+    case Polygon(points @ _*) =>
+      val minX = points.minBy(_.x).x
+      val minY = points.minBy(_.y).y
+      val maxX = points.maxBy(_.x).x
+      val maxY = points.maxBy(_.y).y
+      Location(Point(minX, minY),
+        Rectangle(Point(minX, minY), Point(maxX, minY),
+          Point(maxX, maxY), Point(minX, maxY))
+      )
+    case Location(point, shape) =>
+      val rectangle = BoundingBox(shape)
+      Location(point, rectangle.shape)
   }
 }
