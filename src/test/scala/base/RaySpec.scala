@@ -14,7 +14,7 @@ class RaySpec extends WordSpec {
         assert(Fixtures.OP.intersect(Fixtures.MN).isEmpty)
         assert(Fixtures.OP.intersect(Fixtures.GH).isEmpty)
         assert(Fixtures.OP.intersect(Fixtures.CD).isEmpty)
-        assert(Fixtures.OP.intersect(Fixtures.CE).isEmpty)
+        assert(Fixtures.OP.intersect(Fixtures.CF).isEmpty)
         assert(Fixtures.OP.intersect(Fixtures.EF).isEmpty)
       }
 
@@ -22,7 +22,7 @@ class RaySpec extends WordSpec {
         "KL[(1,9), (-9,-1)], IJ[(-1,9), (9,-1)] and DF[(8,8), (8,-8)]" in {
         val p1 = Fixtures.OP.intersect(Fixtures.KL)
         val p2 = Fixtures.OP.intersect(Fixtures.IJ)
-        val p3 = Fixtures.OP.intersect(Fixtures.DF)
+        val p3 = Fixtures.OP.intersect(Fixtures.DE)
         assert(p1.isDefined && p1.get == Point(-3.0, 5.0))
         assert(p2.isDefined && p2.get == Point(3.0, 5.0))
         assert(p3.isDefined && p3.get == Point(8.0, 5.0))

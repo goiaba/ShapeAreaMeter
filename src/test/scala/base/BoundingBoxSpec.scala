@@ -34,6 +34,13 @@ class BoundingBoxSpec extends WordSpec {
         assert(bb.sides.contains(LineSegment(Point(10,12), Point(10,10))))
       }
     }
+    "calculated to a given Group"should {
+      "produce the correct BoundingBox" in {
+        val bb = BoundingBox(Fixtures.complexGroup)
+        assert(bb.point == Point(-6,-4))
+        assert(bb.getArea() == 80)
+      }
+    }
   }
 
 }

@@ -1,13 +1,15 @@
 package base
 
-import shape.Polygon
+import shape.{Group, Polygon}
 
 /**
  * Created by bruno on 2/7/15.
  */
 object Fixtures {
 
-  val epsilon = 0.005
+  //max acceptable error is 1% of discrepancy
+  // between real and calculated value.
+  val epsilon = 0.01
 
   //points
   val A = Point(1,2)
@@ -15,8 +17,8 @@ object Fixtures {
 
   val C = Point(-8,8)
   val D = Point(8,8)
-  val E = Point(-8,-8)
-  val F = Point(8,-8)
+  val E = Point(8,-8)
+  val F = Point(-8,-8)
 
   val G = Point(-9,1)
   val H = Point(1,-9)
@@ -39,13 +41,18 @@ object Fixtures {
   val V = Point(-4,-4)
   val W = Point(-6,3)
 
+  //simple polygon points
+  val X = Point(0,0)
+  val Y = Point(2,2)
+  val Z = Point(2,0)
+
   //parallel horizontal
   val CD = LineSegment(C, D)
   val EF = LineSegment(E, F)
 
   //parallel vertical
-  val CE = LineSegment(C, E)
-  val DF = LineSegment(D, F)
+  val CF = LineSegment(C, F)
+  val DE = LineSegment(D, E)
 
   //upward slanted
   val GH = LineSegment(G, H)
@@ -60,8 +67,12 @@ object Fixtures {
   val QR = Ray(LineSegment(Q, R))
 
   //polygons
-  val simplePolygon = Polygon(Point(0,0), Point(2,2), Point(2,0))
+  val simplePolygon = Polygon(X, Y, Z)
   val complexPolygon = Polygon(S, T, U, V, W)
+
+  val simpleGroup = Group(simplePolygon)
+  val complexGroup = Group(simplePolygon, Group(complexPolygon))
+  val moreComplexGroup = Group(simplePolygon, Group(Polygon(C, D, E, F), Group(complexPolygon)))
 
   val locationPoint = Point(10,10)
 

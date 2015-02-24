@@ -9,10 +9,9 @@ case class Location(point: Point, shape: Shape) extends Shape {
   require(point != null, "A point must be specified.")
   require(shape != null, "A shape must be specified.")
 
-  override val points = shape.points
+  override val points = shape.points.map { p => p+point }
 
-  override val sides: List[LineSegment] =
-    shape.sides.map {
+  override val sides = shape.sides.map {
       side => LineSegment(side.p1+point, side.p2+point)
     }
 

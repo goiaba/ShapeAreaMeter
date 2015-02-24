@@ -48,7 +48,9 @@ case class Polygon(points: Point*) extends Shape {
   }
 
   /**
-   * Scales a polygon by a given factor
+   * Scales a polygon by a given factor. The polygon is moved to the
+   *  origin, scaled by the factor and then translated to its original
+   *  position back.
    *
    * @param factor the factor to use to scale this Polygon
    * @return a new Polygon scaled by factor
@@ -56,9 +58,10 @@ case class Polygon(points: Point*) extends Shape {
   override def scale(factor: Double): Shape = {
     require(factor > 0,
       "The value to be used to scale the polygon must be positive.")
-    Polygon(sides.map { lineSeg =>
-      Point(lineSeg.p1.x * factor, lineSeg.p1.y * factor)
-    }.toSeq:_*)
+    val oP = points.head
+    val newPoints = oP +: points.tail.map(
+      p => Point(((p.x-oP.x)*factor)+oP.x, ((p.y-oP.y)*factor)+oP.y))
+    Polygon(newPoints:_*)
   }
 
   /**
@@ -83,8 +86,7 @@ case class Polygon(points: Point*) extends Shape {
 
   private def treatVertexCase(ray: Ray, vertexAlreadyTreated: ListBuffer[Point], pointOfIntersection: Point):Boolean = {
     if (isVertex(pointOfIntersection)) {
-      if (notYetTreated(pointOfIntersection, vertexAlreadyTreated))
-      {
+      if (notYetTreated(pointOfIntersection, vertexAlreadyTreated)) {
         val result = sides.filter(ls =>
           ls.p1.equals(pointOfIntersection) || ls.p2.equals(pointOfIntersection))
           .flatMap(ls => List(ls.p1, ls.p2))
