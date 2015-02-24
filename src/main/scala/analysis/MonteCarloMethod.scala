@@ -15,7 +15,7 @@ trait AnalysisMethod {
  */
 object MonteCarloMethod extends AnalysisMethod {
 
-  val shooterMultiplier = 1e+6
+  val shooterMultiplier = 1e+5
 
   def calculateArea(polygon: Polygon): Double = {
     val bb = BoundingBox(polygon)
