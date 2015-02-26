@@ -28,12 +28,12 @@ To run the main class on a Unix-based system selecting one of the options (1..6)
 
 #References
 
-https://bitbucket.org/goiaba/shapes-android-scala
-https://cyberlotus.wordpress.com/2011/04/04/drawing-concentric-circles-using-scala-and-swing/
-http://www.ahristov.com/tutorial/geometry-games/intersection-lines.html
-http://devmag.org.za/2009/04/13/basic-collision-detection-in-2d-part-1/
-http://www.cap.ufrj.br/matematica/PortaldoProfessorMec/atividades/Aula_translacao.pdf
-http://www.euclideanspace.com/maths/algebra/vectors/angleBetween/
-http://www.euclideanspace.com/maths/algebra/vectors/angleBetween/issues/index.htm
-https://cyberlotus.wordpress.com/2011/04/04/drawing-concentric-circles-using-scala-and-swing/
-https://github.com/scala/scala-swing/blob/master/docs/examples/swing/UIDemo.scala
+- https://bitbucket.org/goiaba/shapes-android-scala
+- https://cyberlotus.wordpress.com/2011/04/04/drawing-concentric-circles-using-scala-and-swing/
+- http://www.ahristov.com/tutorial/geometry-games/intersection-lines.html
+- http://devmag.org.za/2009/04/13/basic-collision-detection-in-2d-part-1/
+- http://www.cap.ufrj.br/matematica/PortaldoProfessorMec/atividades/Aula_translacao.pdf
+- http://www.euclideanspace.com/maths/algebra/vectors/angleBetween/
+- http://www.euclideanspace.com/maths/algebra/vectors/angleBetween/issues/index.htm
+- https://cyberlotus.wordpress.com/2011/04/04/drawing-concentric-circles-using-scala-and-swing/
+- https://github.com/scala/scala-swing/blob/master/docs/examples/swing/UIDemo.scala
