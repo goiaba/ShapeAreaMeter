@@ -3,10 +3,10 @@
 - The model classes are with 100% of test coverage. Due to time restrictions and unknowledge of how to test Swing modules, the ui package was not tested. Because of that, the coverage percentage drops to 82.67%, a value below the mininum required. Hoping that this will not be a problem. 
 - Both extra credit tasks were attempted:
     - Simple Swing GUI:
-      - The main method contains six possible shapes to be drawn into a Swing frame. When the user runs the main class, it shows a menu with the options. After choose one of them a new Swing Frame will be created. It is a simple example that does not includes input data handling.
-      - SBT is throwing the following exception: "Exception: sbt.TrapExitSecurityException thrown from the UncaughtExceptionHandler in thread "AWT-EventQueue-0"". This seems to be linked with the java System.exit() call, but I have not found out how to solve this.
+        - The main method contains six possible shapes to be drawn into a Swing frame. When the user runs the main class, it shows a menu with the options. After choose one of them a new Swing Frame will be created. It is a simple example that does not includes input data handling.
+        - SBT is throwing the following exception: "Exception: sbt.TrapExitSecurityException thrown from the UncaughtExceptionHandler in thread "AWT-EventQueue-0"". This seems to be linked with the java System.exit() call, but I have not found out how to solve this.
     - Scaling polygons and groups up or down by a factor:
-      - All the options except 2 are using the scale functionality.
+        - All the options except 2 are using the scale functionality.
 
 #Usage
 
