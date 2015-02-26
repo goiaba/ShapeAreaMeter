@@ -7,3 +7,7 @@ scalaVersion := "2.11.5"
 libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.3" % Test
 
 libraryDependencies += "org.scala-lang" % "scala-swing" % "2.11.0-M5"
+
+ScoverageSbtPlugin.ScoverageKeys.coverageExcludedPackages := """.*ui\.Main.*;.*ui\.drawer.*"""
+
+
