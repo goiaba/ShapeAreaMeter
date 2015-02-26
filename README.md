@@ -8,6 +8,20 @@
     - Scaling polygons and groups up or down by a factor:
         - All the options except 2 are using the scale functionality.
 
+#Design Decisions
+
+Besides the the base classes, we have a trait Shape that specifies what behaviors different shapes should implement. All the important behaviors were defined as methods in the Shape trait and implemented by the classes that extends it.
+
+Extending Shape are Rectangle, Polygon, Location and Group classes. 
+
+Rectangle is a special case of Polygon that should have exactly four sides with paired sides having the same size. This class exists because we always know how to calculate the exact area of a rectangle, and this information is required to calculate the area of an irregular shape.
+
+Location implements the Decorator design pattern to add functionality (in this case, position information) to a simple Shape.
+
+Group implements the Composite design pattern to add the possibility to represent hierarchy of shapes.
+
+BoundingBox is the object responsible by defining the smallest rectangle parallel to the axes that encloses the entire Shape. It could be called as a function instead of a method as we just call it from another class.
+
 #Usage
 
 To run the tests:
