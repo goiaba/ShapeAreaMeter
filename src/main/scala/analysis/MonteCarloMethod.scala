@@ -1,13 +1,13 @@
 package analysis
 
 import base.{BoundingBox, Point}
-import shape.{Shape, Polygon}
+import shape.Shape
 
 import scala.collection.immutable.IndexedSeq
 import scala.util.Random
 
 trait AnalysisMethod {
-  def calculateArea(polygon: Polygon): Double
+  def calculateArea(shape: Shape): Double
 }
 
 /**
@@ -17,25 +17,21 @@ object MonteCarloMethod extends AnalysisMethod {
 
   val shooterMultiplier = 1e+5
 
-  def calculateArea(polygon: Polygon): Double = {
-    val bb = BoundingBox(polygon)
+  def calculateArea(shape: Shape): Double = {
+    val bb = BoundingBox(shape)
     val randomPoints = randomPointsShooter(bb)
     val totalRandomPoints: Double = randomPoints.size
     val totalInnerRandomPoints =
-      randomPoints.filter(polygon.contain(_)).size
+      randomPoints.filter(shape.contain(_)).size
 
     (totalInnerRandomPoints / totalRandomPoints) * bb.getArea()
   }
   
   private def randomPointsShooter(boundingBox: Shape): IndexedSeq[Point] = {
     val (minX, minY, maxX, maxY) = boundingBox.getExtremePoints()
-    val shoots = (boundingBox.getArea() * shooterMultiplier).toInt
-    val bX = minX + (maxX - minX)
-    val bY = minY + (maxY - minY)
-
     (1 to shooterMultiplier.toInt).map { index =>
-      val randX = BigDecimal(bX * Random.nextDouble()).setScale(4, BigDecimal.RoundingMode.HALF_UP).toDouble
-      val randY = BigDecimal(bY * Random.nextDouble()).setScale(4, BigDecimal.RoundingMode.HALF_UP).toDouble
+      val randX = BigDecimal(minX + ((maxX - minX) * Random.nextDouble())).setScale(4, BigDecimal.RoundingMode.HALF_UP).toDouble
+      val randY = BigDecimal(minY + ((maxY - minY) * Random.nextDouble())).setScale(4, BigDecimal.RoundingMode.HALF_UP).toDouble
       Point(randX, randY)
     }.distinct
   }
