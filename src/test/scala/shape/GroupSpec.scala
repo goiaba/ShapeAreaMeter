@@ -21,12 +21,12 @@ class GroupSpec extends WordSpec {
       "create the same scaled Shape when scaled" in {
         assert(Fixtures.simpleGroup.scale(2) == Group(Fixtures.simplePolygon.scale(2)))
       }
-      "return false when queried if the point [-1,1]" +
+      "return false when queried if the point (-1,1) " +
         "is contained in a Shape of the Group" in {
         val point = Point(-1,1)
         assert(Fixtures.simpleGroup.contain(point) == false)
       }
-      "return true when queried if the point [1,1]" +
+      "return true when queried if the point (1,1) " +
         "is contained in a Shape of the Group" in {
         val point = Point(1,1)
         assert(Fixtures.simpleGroup.contain(point))
@@ -59,12 +59,12 @@ class GroupSpec extends WordSpec {
         assert(Fixtures.moreComplexGroup.scale(2) == Group(Fixtures.simplePolygon.scale(2),
           Group(anotherComplexPolygon.scale(2), Group(Fixtures.complexPolygon.scale(2)))))
       }
-      "return true when queried if the point [-1,1]" +
+      "return true when queried if the point (-1,1) " +
         "is contained in a Shape of the Group" in {
         val point = Point(-1,1)
         assert(Fixtures.moreComplexGroup.contain(point))
       }
-      "return false when queried if the point [60,0]" +
+      "return false when queried if the point (60,0) " +
         "is contained in a Shape of the Group" in {
         val point = Point(60,0)
         assert(Fixtures.moreComplexGroup.contain(point) == false)

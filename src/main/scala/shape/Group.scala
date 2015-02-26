@@ -10,12 +10,21 @@ import scala.collection.immutable.Seq
  */
 case class Group(shapes: Shape*) extends Shape {
 
-  override val points: Seq[Point] = shapes.map(shape => shape.points).flatten.toList
-
-  override val sides: List[LineSegment] = shapes.map(shape => shape.sides).flatten.toList
+  /**
+   * List of Point's that compose this Shape.
+   */
+  override val points =
+    shapes.flatMap(shape => shape.points)
 
   /**
-   * Return a tuple containing the extreme points of this Group.
+   * List of LineSegment's formed by each pair of Point's passed
+   * as argument when creating this Shape
+   */
+  override val sides: List[LineSegment] =
+    shapes.map(shape => shape.sides).flatten.toList
+
+  /**
+   * Return a tuple containing the extreme points of this Shape.
    *
    * @return a tuple containing the following information
    *          (minX, minY, maxX, maxY)
@@ -25,11 +34,10 @@ case class Group(shapes: Shape*) extends Shape {
       points.maxBy(point => point.x).x, points.maxBy(point => point.y).y)
 
   /**
-   * Scale a group of shapes by scaling each shape contained in the
-   *  group.
+   * Scales a shape by a given factor
    *
-   * @param factor the factor to use to scale this Group of Shape's
-   * @return a new Group scaled by factor
+   * @param factor the factor to use to scale this Shape
+   * @return a new Shape scaled by factor
    */
   override def scale(factor: Double): Shape =
     Group(shapes.map(shape => shape.scale(factor)):_*)
@@ -44,8 +52,14 @@ case class Group(shapes: Shape*) extends Shape {
    *         Group, an option containing false otherwise
    */
   override def contain(point: Point): Boolean =
-    shapes.exists(s => s.contain(point))
+    shapes.exists(shape => shape.contain(point))
 
+  /**
+   * Calculate the a area of this Shape
+   *
+   * @return the sum of the areas of each Shape contained
+   *          in this Group
+   */
   override def getArea(): Double =
-    shapes.foldLeft(0d)((acc, el) => acc + el.getArea())
+    shapes.foldLeft(0d)((acc, shape) => acc + shape.getArea())
 }

@@ -7,13 +7,13 @@ import scala.math._
 
 case class Point(x: Double, y: Double) {
   /**
-   * Determine the distance between this point and
+   * Determine the distance between this Point and
    *  another Point
    *
-   * @param anotherPoint the point to which the distance
+   * @param anotherPoint the Point to which the distance
    *                      should be calculated
    *
-   * @return the distance between the points
+   * @return the distance between the Point's
    */
   def distanceTo(anotherPoint: Point): Double = {
     sqrt(
@@ -22,6 +22,13 @@ case class Point(x: Double, y: Double) {
     )
   }
 
+  /**
+   * Sum two Point's
+   *
+   * @param point the Point to be added to this Point
+   * @return a new Point representing the sum of this
+   *          Point with a given one
+   */
   def +(point: Point): Point =
     Point(point.x + x, point.y + y)
 }

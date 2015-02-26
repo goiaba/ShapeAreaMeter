@@ -10,7 +10,7 @@ class BoundingBoxSpec extends WordSpec {
   "A BoundingBox" when {
     "calculated to a given Rectangle" should {
       "produce the correct BoundingBox which contains a shape that equals the rectangle" in {
-        val rectangle = Rectangle(Fixtures.C, Fixtures.D, Fixtures.E, Fixtures.F)
+        val rectangle = Rectangle(16, 16)
         val bb = BoundingBox(rectangle)
         assert(bb.shape == rectangle)
       }
@@ -34,10 +34,10 @@ class BoundingBoxSpec extends WordSpec {
         assert(bb.sides.contains(LineSegment(Point(10,12), Point(10,10))))
       }
     }
-    "calculated to a given Group"should {
+    "calculated to a given Group" should {
       "produce the correct BoundingBox" in {
         val bb = BoundingBox(Fixtures.complexGroup)
-        assert(bb.point == Point(-6,-4))
+        assert(bb.originPoint == Point(-6,-4))
         assert(bb.getArea() == 80)
       }
     }

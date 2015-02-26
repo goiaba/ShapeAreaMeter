@@ -7,6 +7,9 @@ import shape.{Group, Polygon}
  */
 object Fixtures {
 
+  def isGoodEnough(conceptualArea: Double, computedArea: Double): Boolean =
+    math.abs(computedArea - conceptualArea) / conceptualArea <= epsilon
+
   //max acceptable error is 1% of discrepancy
   // between real and calculated value.
   val epsilon = 0.01
