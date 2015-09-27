@@ -1,3 +1,15 @@
+Description: Determine the area of complex shapes using ray shooting and Monte Carlo method.
+
+The goal is an understanding of:
+
+- algebraic data types and their representation as case classes
+- pattern matching
+- recursive functions
+- relationship with composite, decorator, and visitor patterns
+- test-driven development (TDD) in Scala and Intellij IDEA
+- some simple computational geometry problems
+- Monte Carlo method
+
 #General
 
 - The model classes are with 100% of test coverage. Due to time restrictions and unknowledge of how to test Swing modules, the ui package was not tested. Because of that, the coverage percentage drops to 82.67%, a value below the mininum required. Hoping that this will not be a problem. 
